@@ -1,40 +1,40 @@
-const { Model } = require('objection'); //Llamar a Model de la libreria 
+// models/Customer.js
+const { Model } = require('objection');
 
-class Customer extends Model { //Creo herencia del modelo
-    static get tableName(){
+class Customer extends Model {
+    static get tableName() {
         return 'customer';
     }
-    static get jsonSchema(){//Especifica la estructura de la tabla
-        return{
-            type: 'object',//Object para un valor, array para una lista
-            required: ['name', 'email'],//Campos requeridos
 
-            properties: {//estructura de los campos
-                id:{type: 'integer'},
-                name:{type: 'string', minLength: 1},
-                email:{type: 'string', format: 'email'},
-                age: {type: 'integer'}
+    static get jsonSchema() {
+        return {
+            type: 'object',
+            required: ['name', 'email'],
+
+            properties: {
+                id: { type: 'integer' },
+                name: { type: 'string', minLength: 1 },
+                email: { type: 'string', format: 'email' },
+                age: { type: 'integer', minimum: 0 } // Asegura que la edad no sea negativa
             }
         };
     }
-    static async getCustomers(){
+
+    static async getCustomers() {
         return await Customer.query();
     }
 
-    static async insert(data){
-        return await Customer.query()
-        .insert(data);
+    static async insert(data) {
+        return await Customer.query().insert(data);
     }
 
-    static async update(data,id){
-        return await Customer.query()
-        .patch(id,data);
+    static async update(id, data) {
+        return await Customer.query().patch(data).where('id', id);
     }
 
-    static async delete(id){
-        return await Customer.query()
-        .deleteById(id);
+    static async delete(id) {
+        return await Customer.query().deleteById(id);
     }
 }
 
-module.exports = Customer; 
+module.exports = Customer;
