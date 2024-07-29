@@ -14,3 +14,23 @@ npx knex init
 #crear migrasiones 
 npx knex migrate:make nombre de la tabla
 npxknex migrate: latest
+
+
+pasos para hacer que funcione en windows 
+1. Cambiar el knexfile el usuario y la contrasena 
+2. Index cambiar puerto             
+
+
+
+en ubuntu
+
+      user: 'apli_mishell',  //root
+      password:'123456',    //
+      database: 'cloud2'
+
+
+      const port = 3001;
+
+
+
+      

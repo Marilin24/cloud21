@@ -4,7 +4,7 @@
  */
 exports.up = function(knex) {
     return knex.schema.table('flores', function(table){
-      table.integer('descripcion');
+      table.string('descripcion').notNullable();
     });
   };
   

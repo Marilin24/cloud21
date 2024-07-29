@@ -9,8 +9,8 @@ module.exports = {
     client: 'mysql2',
     connection: {
       host: '127.0.0.1',
-      user: 'apli_mishell',
-      password:'123456',
+      user: 'apli_mishell',  //root
+      password:'123456',    //
       database: 'cloud2'
     },
     migrations: {

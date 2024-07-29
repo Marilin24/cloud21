@@ -1,7 +1,7 @@
-// models/Flor.js
+// models/Flower.js
 const { Model } = require('objection');
 
-class Flor extends Model {
+class flores extends Model {
     static get tableName() {
         return 'flores';
     }
@@ -13,28 +13,36 @@ class Flor extends Model {
 
             properties: {
                 id: { type: 'integer' },
-                nombre: { type: 'string', minLength: 1 },
-                descripcion: { type: 'string' },
-                tipo: { type: 'integer' }
+                name: { type: 'string', minLength: 1 },
+                name_cientifico: { type: 'string', minLength: 1 },
+                tipo: { type: 'string', minLength: 1 },
+                lugar_origen: { type: 'string', minLength: 1 },
+                familia: { type: 'string', minLength: 1 },
+                created_at: { type: 'string', format: 'date-time' },
+                updated_at: { type: 'string', format: 'date-time' },
             }
         };
     }
 
     static async getFlores() {
-        return await Flor.query();
+        return await flores.query();
+    }
+
+    static async gerFloresById(id) {
+        return await flores.query().findById(id);
     }
 
     static async insert(data) {
-        return await Flor.query().insert(data);
+        return await flores.query().insert(data);
     }
 
-    static async update(data, id) {
-        return await Flor.query().patch(data).where('id', id);
+    static async updateFlower(id, data) {
+        return await flores.query().patch(data).where('id', id);
     }
 
-    static async delete(id) {
-        return await Flor.query().deleteById(id);
+    static async deleteFlower(id) {
+        return await flores.query().deleteById(id);
     }
 }
 
-module.exports = Flor;
+module.exports = flores;

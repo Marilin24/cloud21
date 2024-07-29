@@ -9,12 +9,15 @@ class Especie extends Model {
     static get jsonSchema() {
         return {
             type: 'object',
-            required: ['nombre'],
+            required: ['nombre', 'familia'],
 
             properties: {
                 id: { type: 'integer' },
                 nombre: { type: 'string', minLength: 1 },
-                descripcion: { type: 'string' }
+                familia: { type: 'string', minLength: 1 },
+                descripcion: { type: 'string', nullable: true },
+                color: { type: 'string', nullable: true },
+                temporada_floracion: { type: 'string', nullable: true },
             }
         };
     }
@@ -23,11 +26,15 @@ class Especie extends Model {
         return await Especie.query();
     }
 
+    static async getEspecieById(id) {
+        return await Especie.query().findById(id);
+    }
+
     static async insert(data) {
         return await Especie.query().insert(data);
     }
 
-    static async update(data, id) {
+    static async update(id, data) {
         return await Especie.query().patch(data).where('id', id);
     }
 

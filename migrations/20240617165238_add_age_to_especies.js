@@ -4,7 +4,7 @@
  */
 exports.up = function(knex) {
     return knex.schema.table('especies', function(table){
-      table.integer('tipo');
+      table.string('tipo').notNullable();
     });
   };
   

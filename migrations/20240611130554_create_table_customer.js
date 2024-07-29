@@ -9,8 +9,11 @@ exports.up = function(knex) {
     return knex.schema.createTable('customer', table =>{
         table.increments('id').primary();
         table.string('name').notNullable();
-        table.string('email').notNullable().unique();
-        table.timestamp(true, true);
+        table.string('last_name').notNullable();
+        table.string('email').notNullable();
+        table.string('number').notNullable();
+        table.string('genero').notNullable();
+        table.date('fechaN', true);
     });
   
 };

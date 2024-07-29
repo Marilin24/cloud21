@@ -7,8 +7,10 @@ exports.up = function(knex) {
     return knex.schema.createTable('flores', table =>{
         table.increments('id').primary();
         table.string('name').notNullable();
-        table.string('Tipo').notNullable();
-        table.timestamp(true, true);
+        table.string('name_cientifico').notNullable();
+        table.string('tipo').notNullable();
+        table.string('lugar_origen').notNullable();
+        table.string('familia').notNullable();
     });
   
 };

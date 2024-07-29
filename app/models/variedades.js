@@ -9,12 +9,14 @@ class Variedad extends Model {
     static get jsonSchema() {
         return {
             type: 'object',
-            required: ['nombre', 'especies'],
+            required: ['nombre'],
 
             properties: {
                 id: { type: 'integer' },
                 nombre: { type: 'string', minLength: 1 },
-                especies: { type: 'string', minLength: 1 }
+                especies: { type: 'string', minLength: 1 },
+                grupo: { type: 'string', minLength: 1 },
+                lugar: { type: 'string', minLength: 1 },
             }
         };
     }
@@ -23,15 +25,19 @@ class Variedad extends Model {
         return await Variedad.query();
     }
 
+    static async getVariedadById(id) {
+        return await Variedad.query().findById(id);
+    }
+
     static async insert(data) {
         return await Variedad.query().insert(data);
     }
 
-    static async update(data, id) {
+    static async updateVariedad(id, data) {
         return await Variedad.query().patch(data).where('id', id);
     }
 
-    static async delete(id) {
+    static async deleteVariedad(id) {
         return await Variedad.query().deleteById(id);
     }
 }
