@@ -18,8 +18,6 @@ class flores extends Model {
                 tipo: { type: 'string', minLength: 1 },
                 lugar_origen: { type: 'string', minLength: 1 },
                 familia: { type: 'string', minLength: 1 },
-                created_at: { type: 'string', format: 'date-time' },
-                updated_at: { type: 'string', format: 'date-time' },
             }
         };
     }

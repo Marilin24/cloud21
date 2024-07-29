@@ -10,7 +10,7 @@ module.exports = {
     connection: {
       host: '127.0.0.1',
       user: 'apli_mishell',  //root
-      password:'123456',    //
+      password:'',    //
       database: 'cloud2'
     },
     migrations: {

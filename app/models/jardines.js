@@ -18,8 +18,6 @@ class jardines extends Model {
                 encargado: { type: 'string', minLength: 1 },
                 tipo: { type: 'string', minLength: 1 },
                 descripcion: { type: 'string', minLength: 1 },
-                created_at: { type: 'string', format: 'date-time' },
-                updated_at: { type: 'string', format: 'date-time' },
             }
         };
     }
